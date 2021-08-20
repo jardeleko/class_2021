@@ -1,0 +1,32 @@
+These pages describe the original more synchronous API which might be considered easier to use. Some of the calls will block. For the new totally asynchronous API where no calls block, which is especially suitable for use in windowed environments, see the MQTT C Client Asynchronous API Documentation. The MQTTClient API is not thread safe, whereas the MQTTAsync API is.
+
+An MQTT client application connects to MQTT-capable servers. A typical client is responsible for collecting information from a telemetry device and publishing the information to the server. It can also subscribe to topics, receive messages, and use this information to control the telemetry device.
+
+MQTT clients implement the published MQTT v3 protocol. You can write your own API to the MQTT protocol using the programming language and platform of your choice. This can be time-consuming and error-prone.
+
+To simplify writing MQTT client applications, this library encapsulates the MQTT v3 protocol for you. Using this library enables a fully functional MQTT client application to be written in a few lines of code. The information presented here documents the API provided by the MQTT Client library for C.
+
+Using the client
+Applications that use the client library typically use a similar structure:
+
+Create a client object
+Set the options to connect to an MQTT server
+Set up callback functions if multi-threaded (asynchronous mode) operation is being used (see Asynchronous vs synchronous client applications).
+Subscribe to any topics the client needs to receive
+Repeat until finished:
+Publish any messages the client needs to
+Handle any incoming messages
+Disconnect the client
+Free any memory being used by the client
+Some simple examples are shown here:
+
+Synchronous publication example
+Asynchronous publication example
+Asynchronous subscription example
+Additional information about important concepts is provided here:
+
+Asynchronous vs synchronous client applications
+Callbacks
+Subscription wildcards
+Quality of service
+Tracing
